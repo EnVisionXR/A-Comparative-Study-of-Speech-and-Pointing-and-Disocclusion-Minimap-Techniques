@@ -1,0 +1,4 @@
+Purple_Cube(Clone), 0.5404159, 0.6427471, 0
+Green_Pyramid(Clone), -0.5695439, 0.8219609, 0
+Red_Cylinder(Clone), 0.1967033, -0.292031, 0
+Blue_Pyramid(Clone), 0.3255812, -0.5962622, 0

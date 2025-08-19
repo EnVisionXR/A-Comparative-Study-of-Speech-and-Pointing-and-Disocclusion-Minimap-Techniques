@@ -1,0 +1,2 @@
+Green_Cylinder(Clone), 0.6204763, 0.1442664, 0
+Red_Sphere(Clone), 0.3864595, -0.9223064, 0

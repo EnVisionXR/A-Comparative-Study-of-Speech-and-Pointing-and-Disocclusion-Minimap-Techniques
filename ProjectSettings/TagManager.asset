@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Floor
+  - GestureFilter
+  - cube
+  - sphere
+  - infinity
+  - star
+  - cylinder
+  - enemy
+  - enemycube
+  - enemypyramid
+  - enemystar
+  - enemysphere
+  - clone
+  - unclutterDuplicate
+  - GrabbingHand
+  - GridInteractable
+  - UnknownObject1
+  - UnknownObject2
+  - UnknownObject3
+  - UnknownObject5
+  - pyramid1
+  - homeObject
+  - pyramid
+  - temporary targets
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ground
+  - Water
+  - UI
+  - Player
+  - Enemy
+  - LenSelectInteractables
+  - confirmationCircle
+  - OnlyCollideWithHand
+  - Hand
+  - Interactables
+  - Temporary Targets
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0

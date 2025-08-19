@@ -1,0 +1,4 @@
+White_Patterned_Sphere(Clone), 0.9791815, 0.2029869, 0
+Purple_Barrel(Clone), 0.6873081, 0.5885427, 0
+Purple_Cube(Clone), 0.03160048, -0.1120238, 0
+White_Patterned_Pyramid_Cuboid(Clone), -0.3921305, 0.5916603, 0

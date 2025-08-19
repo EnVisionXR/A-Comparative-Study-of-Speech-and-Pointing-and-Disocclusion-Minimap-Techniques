@@ -1,0 +1,5 @@
+White_Patterned_Barrel(Clone), 0.3262085, -0.4522876, 0
+Blue_Sphere(Clone), -0.09601753, -0.02153181, 0
+Purple_Barrel(Clone), 0.996915, 0.07848946, 0
+Purple_Patterned_Sphere(Clone), 0.4326097, 0.3194341, 0
+Purple_Patterned_Barrel(Clone), 0.02164889, -0.484758, 0
