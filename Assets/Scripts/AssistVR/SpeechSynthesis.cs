@@ -14,13 +14,10 @@ using Microsoft.CognitiveServices.Speech;
 public class SpeechSynthesis : MonoBehaviour
 {
     // Hook up the four properties below with a Text, InputField, Button and AudioSource object in your UI.
-    //public Text outputText;
-    //public InputField inputField;
-    //public Button speakButton;
     private AudioSource audioSource;
 
     // Replace with your own subscription key and service region (e.g., "westus").
-    private const string SubscriptionKey = "2042afb7c5bc4fe3bbe81e0b0af4833d";
+    private const string SubscriptionKey = "XXX";
     private const string Region = "uksouth";
 
     private const int SampleRate = 24000;
@@ -109,33 +106,9 @@ public class SpeechSynthesis : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        //if (outputText == null)
-        //{
-        //    UnityEngine.Debug.LogError("outputText property is null! Assign a UI Text element to it.");
-        //}
-        //else if (inputField == null)
-        //{
-        //    message = "inputField property is null! Assign a UI InputField element to it.";
-        //    UnityEngine.Debug.LogError(message);
-        //}
-        //else if (speakButton == null)
-        //{
-        //    message = "speakButton property is null! Assign a UI Button to it.";
-        //    UnityEngine.Debug.LogError(message);
-        //}
 
-        // Continue with normal initialization, Text, InputField and Button objects are present.
-        //inputField.text = "Enter text you wish spoken here.";
-        //message = "Click button to synthesize speech";
-          
-        //speakButton.onClick.AddListener(ButtonClick);
-
-        // Creates an instance of a speech config with specified subscription key and service region.
         speechConfig = SpeechConfig.FromSubscription(SubscriptionKey, Region);
 
-        // The default format is RIFF, which has a riff header.
-        // We are playing the audio in memory as audio clip, which doesn't require riff header.
-        // So we need to set the format to raw (24KHz for better quality).
         speechConfig.SetSpeechSynthesisOutputFormat(SpeechSynthesisOutputFormat.Raw24Khz16BitMonoPcm);
 
         // Creates a speech synthesizer.
@@ -154,10 +127,6 @@ public class SpeechSynthesis : MonoBehaviour
 
     void Update()
     {
-        //if (outputText != null)
-        //{
-        //    outputText.text = message;
-        //}
 
         if (audioSourceNeedStop)
         {
