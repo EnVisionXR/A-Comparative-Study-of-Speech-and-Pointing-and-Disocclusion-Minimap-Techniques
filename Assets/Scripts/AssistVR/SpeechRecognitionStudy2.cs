@@ -36,7 +36,7 @@ public class SpeechRecognitionStudy2 : MonoBehaviour
     private Camera mainCamera;
     [SerializeField] private InputActionReference primaryButtonPressed;
     [SerializeField] private InputActionReference secondaryButtonPressed;
-    [SerializeField] public string azureCLUKey = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InEtMjNmYWxldlpoaEQzaG05Q1Fia1A1TVF5VSIsImtpZCI6InEtMjNmYWxldlpoaEQzaG05Q1Fia1A1TVF5VSJ9.eyJhdWQiOiJodHRwczovL2NvZ25pdGl2ZXNlcnZpY2VzLmF6dXJlLmNvbSIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzQ5YTUwNDQ1LWJkZmEtNGI3OS1hZGUzLTU0N2I0ZjM5ODZlOS8iLCJpYXQiOjE3MTQxMjczODgsIm5iZiI6MTcxNDEyNzM4OCwiZXhwIjoxNzE0MTMyODcxLCJhY3IiOiIxIiwiYWlvIjoiQVlRQWUvOFdBQUFBOTY5VjltUDZtamFlcGdXcWNuUW1nS09XcCtZUFdORUtsek5LM1MvWTFTRlBncmphd24zY3NJOHY1eTBlSjhRb1FDVnFHbk5pZG80ajM4VE1sTHlrc0tZNXNJTUZpbE01Y2dLRGVxQVJvMjg0Z2dCK1RZNmRvZjM2dFlTeHZzb2FmR3ZWZXB3UGZOWU9jTnJxMTArV0V6OXFtaFphVnZHVnN5RmhpZ25NeEJRPSIsImFtciI6WyJwd2QiLCJtZmEiXSwiYXBwaWQiOiI4ODk0NWRiMC0zYzBlLTQyZGYtOTRmYS01ODVkMWFkNGFhMjAiLCJhcHBpZGFjciI6IjIiLCJmYW1pbHlfbmFtZSI6IkNoZW4iLCJnaXZlbl9uYW1lIjoiSnVubG9uZyIsImdyb3VwcyI6WyIxYjI3MDgwNC1lYzg1LTQxNzEtODcxOC1lZGQwZGNkYTVmN2QiLCI5MWY4MmMwNS02ZDQ0LTQ1ZmEtYTVkZS1lOWFkYjQ0ZDExNTAiLCIzMWJlYWQwOS05YmRhLTQxZDgtODBjOS03YTk5MTFmMzhkMWEiLCIxNTEzM2MwYy02NzczLTQ0OTktOTQzMC0wMmFkNzgzOWQ2MDMiLCI4YzY4M2UxNC1mOWIyLTRkYjUtYmJhOC1kZmNjNzM5OGVhMDciLCJlYWNiNmIxNS01MDRhLTQ0MDUtODljNi0yYTJiZDg3OWFmYzAiLCI1ODcwNWMxNy0zNTBlLTRjNWYtYTljZC1jOGIzYjJhOTUyMDgiLCI2ZGUyZDkxOC01YWIxLTQ2N2UtOWM5NC0xM2EzODNiMTdmZjciLCIyMWVhM2UyMy0yYjY1LTRlOWQtOTYyMC05OWM2YzU4MjJkY2YiLCIxYjhiNDMyZS04ZjQyLTQ5Y2ItODlhNS01MTkzYzVhZDk2NWQiLCJiN2EwZjkzMi01OTY0LTQxYjItOWJiMC05YjhjYWRmNmI5OTkiLCJiZGIyYmMzOC0zZGMwLTQ1YjItYWQ5NC0wZjcwMTMyMzc1NWUiLCI5N2Q5MmIzOS0yYWUzLTQ5YTYtOTBjOC05OGQ1YjU5ZmUzOGEiLCIwMzI4MzUzOS04MjcxLTQ2YmMtOGViNS01NDE2OGM5MGI4ZTgiLCIyZDRjODI0MS1hNmExLTQ5MWUtYjgxYi0zMzVlYTRhN2Q1MjkiLCJkY2VlNzM0Ni1kNGRlLTQ2N2UtYjBiZi0zZWQ0NmFiMzU2MzIiLCI4MjA5OWM0Yi1jYTZiLTQ5MmUtOGYxMS01N2ZlMjkwM2I1NzgiLCJjNTU1MmY1MS04M2RmLTQ3MGMtYmFkNi1kMjgwMjViOWI0YjIiLCI4YmI5YWE3MS1iOTFkLTRlZWMtYTM0ZC04OWRlZTY3MWY5ODciLCJlZmU5NWQ3My01MWE4LTRlZGQtOGRhMy1lNWI5YTZjMTdjOTEiLCJjMjVlYzE3Yy01Y2RhLTQ3ODMtYWI1OS05OWMyMGU4M2JhYmIiLCI0YjRkYWQ3Zi0yMGRkLTQ4NmQtOGIwNC04MDQwYmFmZjdiMzgiLCI4NDIxNWQ4MS01MGQ4LTQ0NTktYmM4Ni1hMmY5MjI0MDk1YTEiLCJjYzJjZGQ4Yi1lYWNlLTRhNGItYTk1MC05Yjk4OWExODNiOTciLCIwZGNmMTk5Ni0zZDZhLTQ0YzAtYjE1NC1lMTI3YzEyNDIzNzAiLCJmYWU3YzFhZi04MzRiLTQ1NDUtOGJmOS1iNWYxZGQwZDUyZjciLCJlZTRjMDZiZi1kOTNmLTQxNmMtOWJlNC1iY2ZhOWU1MjY2YzEiLCJjNGVlN2NkMS1mZTAyLTRjYTctOTFjYS1lNzdkYTc1NjI1YjUiLCI2OThhOTNmYi0wNTNhLTRhYTktODBkMy1mYWI1NGI2NGQzMWEiLCIwY2JjZDdmYi0xZjE3LTQ4ZmMtYWMzZS00YTIyMTMxZmE5MmQiLCI2NzdhMGVmZS0xZWQ4LTRlZDYtOWZlNC04N2M3NTk1YzI2MGIiXSwiaXBhZGRyIjoiMTMxLjExMS41LjE0NyIsIm5hbWUiOiJKdW5sb25nIENoZW4iLCJvaWQiOiJmZTlhOGI1MC01NTU0LTQ3M2MtYTVmOS00YjQ2NjFiMjA5ZjQiLCJvbnByZW1fc2lkIjoiUy0xLTUtMjEtMzE0Mjk0MjY1Ni00MTU3MTk3NzM5LTI4MjA5MDU5MDktMjgzOTEzIiwicHVpZCI6IjEwMDMyMDAyMEMwNTczODMiLCJyaCI6IjAuQVVjQVJRU2xTZnE5ZVV1dDQxUjdUem1HNlpBaU1YM0lLRHhIb08yT1UzU2JiVzFIQUQ0LiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6IldqYTlwRm56U2RjY2NxN3JmRlRXNjYyc2Mwa1ZFcmVESEZQdE9ZNlJMTXMiLCJ0aWQiOiI0OWE1MDQ0NS1iZGZhLTRiNzktYWRlMy01NDdiNGYzOTg2ZTkiLCJ1bmlxdWVfbmFtZSI6ImpjMjM3NUBjYW0uYWMudWsiLCJ1cG4iOiJqYzIzNzVAY2FtLmFjLnVrIiwidXRpIjoiTnRrYUg1TUltVS1Gekc0TzV3Zy1BUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il19.odXZe6AxztsAlpcezL3_aa_m7GPrIReSkaljlW1BGyxn9dgNoAaIbaJNV7qNszyOTphaREUE6iPf8tJOUwS6au-13CZ-XtI4xKSPUiF3uYQhPe6XslVjyqgPA3kKPu0ifQWjcanUoxUECJJR9eU0cMU0AryZYT0WLRJU0YJwUiSNwGTYDkBC26H0E8Is_JEzRhmflE6ysmZStxG1mQwvbhyr8geBOGk19xx7JgvQFiT3ljcblKwJToySZ3V76992hDZzH-mJu-TNGEvFw9SpF6kb4Z-gTixEJLIo68vqKJ6X1UXzmaY5hSNKLB9i357WUAgHg8mkyVPCjP30h3iVZw";
+    [SerializeField] public string azureCLUKey = "Bearer XXX";
 
     //private GameObject CameraController;
     private GameObject AudioSourceObject;
@@ -64,7 +64,6 @@ public class SpeechRecognitionStudy2 : MonoBehaviour
     public void Start()
     {
         draggablePanel = FindObjectOfType<DraggablePanel>();
-        //primaryButtonActionReference = rightHand.interactions.FirstOrDefault(i => i.name == "ActivateSpeech");
         sceneDescript = false;
         prevSceneDescriptState_ = false;
         mainObjectActivate = false;
@@ -94,29 +93,11 @@ public class SpeechRecognitionStudy2 : MonoBehaviour
         //audioSource.spatialBlend = 0;
         passedTimeSinceLastClick += Time.deltaTime;
         primaryButtonDown = false;//OVRInput.Get(OVRInput.Button.One);
-        //rightHand.inputDevice.IsPressed(primaryButton, out primaryButtonDown);
-        //primaryButtonDown = rightHand.selectAction.action.IsPressed();
-        //if (rightHand != null && rightHand.isActiveAndEnabled && primaryButtonActionReference != null)
-        //{
-        //    // Check if the primary button is pressed
-        //    if (primaryButtonActionReference.action.IsPressed())
-        //    {
-        //        UnityEngine.Debug.Log("Primary button pressed!");
-        //        // Add your custom logic here
-        //    }
-        //}
-        //if (primaryButtonPressed.action.WasPressedThisFrame())
-        //{
-        //    UnityEngine.Debug.Log("Primary button pressed!");
-        //}
-        //UnityEngine.Debug.Log("Primary Button Down: " + primaryButtonDown);
         prevSceneDescriptState_ = sceneDescript;
         prevMainObjectState_ = mainObjectActivate;
         prevSearchObjectState = searchObjectActivate;
         prevCancelState_ = cancelActivate;
 
-        //if (Input.GetKeyDown(KeyCode.C))
-        //if (primaryButtonDown && !prevPrimaryButtonState_)
         if (primaryButtonPressed.action.WasPressedThisFrame())
         {
             if (previouslyPressed)
@@ -136,158 +117,6 @@ public class SpeechRecognitionStudy2 : MonoBehaviour
             }
         }
 
-        //if (secondaryButtonPressed.action.WasPressedThisFrame())
-        //{
-        //    bool select_correct = true;
-        //    bool has_selection = false;
-        //    bool all_targets_selected = true;
-        //    searchExperimentLevel = FindObjectOfType<SearchExperimentLevel>();
-
-        //    if (ExperimentTrial.activeTrial != null)
-        //    {
-        //        GameObject targetGO = ExperimentTrial.targetInteractable.gameObject;
-        //        if (searchExperimentLevel.selectStatusDict.ContainsKey(targetGO.GetComponent<Interactable>()))
-        //        {
-        //            if (searchExperimentLevel.selectStatusDict[targetGO.GetComponent<Interactable>()] == false)
-        //            {
-        //                all_targets_selected = false;
-        //            }
-        //            else
-        //            {
-        //            }
-        //        }
-        //        else
-        //        {
-        //        }
-
-        //        TargetInteractable[] allTargetInteractables = FindObjectsOfType<TargetInteractable>();
-        //        foreach (TargetInteractable targetInteractable in allTargetInteractables)
-        //        {
-        //            //if (targetInteractable.gameObject.tag == "temporary targets")
-        //            if (targetInteractable.gameObject.GetComponent<TemporaryTarget>() != null)
-        //            {
-        //                GameObject clonetargetGO = targetInteractable.gameObject;
-        //                if (searchExperimentLevel.selectStatusDict.ContainsKey(clonetargetGO.GetComponent<Interactable>()))
-        //                {
-        //                    if (searchExperimentLevel.selectStatusDict[clonetargetGO.GetComponent<Interactable>()] == false)
-        //                    {
-        //                        all_targets_selected = false;
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    if (SearchExperimentTrial.activeTrial != null)
-        //    {
-        //        GameObject targetGO = SearchExperimentTrial.targetInteractable.gameObject;
-        //        if (searchExperimentLevel.selectStatusDict.ContainsKey(targetGO.GetComponent<Interactable>()))
-        //        {
-        //            if (searchExperimentLevel.selectStatusDict[targetGO.GetComponent<Interactable>()] == false)
-        //            {
-        //                all_targets_selected = false;
-        //            }
-        //            else
-        //            {
-        //            }
-        //        }
-        //        else
-        //        {
-        //        }
-
-        //        SearchTargetInteractable[] allTargetInteractables = FindObjectsOfType<SearchTargetInteractable>();
-        //        foreach (SearchTargetInteractable targetInteractable in allTargetInteractables)
-        //        {
-        //            //if (targetInteractable.gameObject.tag == "temporary targets")
-        //            if (targetInteractable.gameObject.GetComponent<TemporaryTarget>() != null)
-        //            {
-        //                GameObject clonetargetGO = targetInteractable.gameObject;
-        //                if (searchExperimentLevel.selectStatusDict.ContainsKey(clonetargetGO.GetComponent<Interactable>()))
-        //                {
-        //                    if (searchExperimentLevel.selectStatusDict[clonetargetGO.GetComponent<Interactable>()] == false)
-        //                    {
-        //                        all_targets_selected = false;
-        //                    }
-        //                    else
-        //                    {
-        //                    }
-        //                }
-        //                else
-        //                {
-        //                }
-        //            }
-        //        }
-        //    }
-
-
-        //    foreach (Interactable go in FindObjectsOfType<Interactable>())
-        //    {
-        //        if (searchExperimentLevel.selectStatusDict.ContainsKey(go))
-        //        {
-        //            if (searchExperimentLevel.selectStatusDict[go] == true)
-        //            {
-        //                has_selection = true;
-        //                if (!go.ValidateSelection())
-        //                {
-        //                    select_correct = false;
-        //                }
-        //            }
-        //        }
-        //        else
-        //        {
-        //            searchExperimentLevel.selectStatusDict[go] = false;
-        //        }
-        //    }
-        //    UnityEngine.Debug.Log("Secondary button pressed!");
-        //    if (has_selection && select_correct && all_targets_selected)
-        //    {
-        //        if (ExperimentTrial.activeTrial != null)
-        //        {
-        //            ExperimentTrial.activeTrial.RecordTargetHit();
-        //            GetComponent<Object_collected>().ResetGameObject();
-        //        }
-        //        if (SearchExperimentTrial.activeTrial != null)
-        //        {
-        //            SearchExperimentTrial.activeTrial.RecordTargetHit();
-        //            if (GetComponent<Object_collected>() != null)
-        //            {
-        //                GetComponent<Object_collected>().ResetGameObject();
-        //            }
-        //        }
-        //    }
-        //    //else if (has_selection && !(select_correct))
-        //    else if (has_selection && !(select_correct && all_targets_selected))
-        //    {
-        //        if (ExperimentTrial.activeTrial != null)
-        //        {
-        //            ExperimentTrial.activeTrial.RecordTargetMiss();
-        //            GetComponent<Object_collected>().ResetGameObject();
-        //        }
-        //        if (SearchExperimentTrial.activeTrial != null)
-        //        {
-        //            SearchExperimentTrial.activeTrial.RecordTargetMiss();
-        //            if (GetComponent<Object_collected>() != null)
-        //            {
-        //                GetComponent<Object_collected>().ResetGameObject();
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        UnityEngine.Debug.LogError("None objects selected!");
-        //    }
-        //}
-        //if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    await AzureCLU.StartAsync();
-        //}
-
-
-
-        //if (Input.GetKeyDown(KeyCode.S))
         if (previouslyPressed && passedTimeSinceLastClick > doubleclickDelay)
         {
             SingleClick();
@@ -314,7 +143,7 @@ public class SpeechRecognitionStudy2 : MonoBehaviour
 
         //cancelActivate = true;
 
-        var speechConfig = SpeechConfig.FromSubscription("75c037ced5b843f2a2f2d9de0d21b55b", "uksouth");
+        var speechConfig = SpeechConfig.FromSubscription("XXX", "uksouth");
         speechConfig.SpeechRecognitionLanguage = "en-US";
         using var audioConfig = AudioConfig.FromDefaultMicrophoneInput();
         SpeechRecognizer speechRecognizer = new SpeechRecognizer(speechConfig, audioConfig);
@@ -375,7 +204,7 @@ public class SpeechRecognitionStudy2 : MonoBehaviour
                 audioSource.Play();
 
 
-                string url = "https://cognitivelanguage0122.cognitiveservices.azure.com/language/:analyze-conversations?api-version=2022-10-01-preview";
+                string url = "https://cognitivelanguage0122.cognitiveservices.azure.com/language/XXX";
                 string bodyJsonString = "{\"kind\":\"Conversation\",\"analysisInput\":{\"conversationItem\":{\"id\":\"PARTICIPANT_ID_HERE\",\"text\":\"" + userQuery + "\",\"modality\":\"text\",\"language\":\"en\",\"participantId\":\"PARTICIPANT_ID_HERE\"}},\"parameters\":{\"projectName\":\"AIGC4XR-UserStudy\",\"verbose\":true,\"deploymentName\":\"UserStudy-0501\",\"stringIndexType\":\"TextElement_V8\"}}";
 
 
@@ -385,8 +214,7 @@ public class SpeechRecognitionStudy2 : MonoBehaviour
                 request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
                 request.SetRequestHeader("Content-Type", "application/json");
                 request.SetRequestHeader("authorization", azureCLUKey);
-                //request.SetRequestHeader("authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InEtMjNmYWxldlpoaEQzaG05Q1Fia1A1TVF5VSIsImtpZCI6InEtMjNmYWxldlpoaEQzaG05Q1Fia1A1TVF5VSJ9.eyJhdWQiOiJodHRwczovL2NvZ25pdGl2ZXNlcnZpY2VzLmF6dXJlLmNvbSIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzQ5YTUwNDQ1LWJkZmEtNGI3OS1hZGUzLTU0N2I0ZjM5ODZlOS8iLCJpYXQiOjE3MTQxMjczODgsIm5iZiI6MTcxNDEyNzM4OCwiZXhwIjoxNzE0MTMyODcxLCJhY3IiOiIxIiwiYWlvIjoiQVlRQWUvOFdBQUFBOTY5VjltUDZtamFlcGdXcWNuUW1nS09XcCtZUFdORUtsek5LM1MvWTFTRlBncmphd24zY3NJOHY1eTBlSjhRb1FDVnFHbk5pZG80ajM4VE1sTHlrc0tZNXNJTUZpbE01Y2dLRGVxQVJvMjg0Z2dCK1RZNmRvZjM2dFlTeHZzb2FmR3ZWZXB3UGZOWU9jTnJxMTArV0V6OXFtaFphVnZHVnN5RmhpZ25NeEJRPSIsImFtciI6WyJwd2QiLCJtZmEiXSwiYXBwaWQiOiI4ODk0NWRiMC0zYzBlLTQyZGYtOTRmYS01ODVkMWFkNGFhMjAiLCJhcHBpZGFjciI6IjIiLCJmYW1pbHlfbmFtZSI6IkNoZW4iLCJnaXZlbl9uYW1lIjoiSnVubG9uZyIsImdyb3VwcyI6WyIxYjI3MDgwNC1lYzg1LTQxNzEtODcxOC1lZGQwZGNkYTVmN2QiLCI5MWY4MmMwNS02ZDQ0LTQ1ZmEtYTVkZS1lOWFkYjQ0ZDExNTAiLCIzMWJlYWQwOS05YmRhLTQxZDgtODBjOS03YTk5MTFmMzhkMWEiLCIxNTEzM2MwYy02NzczLTQ0OTktOTQzMC0wMmFkNzgzOWQ2MDMiLCI4YzY4M2UxNC1mOWIyLTRkYjUtYmJhOC1kZmNjNzM5OGVhMDciLCJlYWNiNmIxNS01MDRhLTQ0MDUtODljNi0yYTJiZDg3OWFmYzAiLCI1ODcwNWMxNy0zNTBlLTRjNWYtYTljZC1jOGIzYjJhOTUyMDgiLCI2ZGUyZDkxOC01YWIxLTQ2N2UtOWM5NC0xM2EzODNiMTdmZjciLCIyMWVhM2UyMy0yYjY1LTRlOWQtOTYyMC05OWM2YzU4MjJkY2YiLCIxYjhiNDMyZS04ZjQyLTQ5Y2ItODlhNS01MTkzYzVhZDk2NWQiLCJiN2EwZjkzMi01OTY0LTQxYjItOWJiMC05YjhjYWRmNmI5OTkiLCJiZGIyYmMzOC0zZGMwLTQ1YjItYWQ5NC0wZjcwMTMyMzc1NWUiLCI5N2Q5MmIzOS0yYWUzLTQ5YTYtOTBjOC05OGQ1YjU5ZmUzOGEiLCIwMzI4MzUzOS04MjcxLTQ2YmMtOGViNS01NDE2OGM5MGI4ZTgiLCIyZDRjODI0MS1hNmExLTQ5MWUtYjgxYi0zMzVlYTRhN2Q1MjkiLCJkY2VlNzM0Ni1kNGRlLTQ2N2UtYjBiZi0zZWQ0NmFiMzU2MzIiLCI4MjA5OWM0Yi1jYTZiLTQ5MmUtOGYxMS01N2ZlMjkwM2I1NzgiLCJjNTU1MmY1MS04M2RmLTQ3MGMtYmFkNi1kMjgwMjViOWI0YjIiLCI4YmI5YWE3MS1iOTFkLTRlZWMtYTM0ZC04OWRlZTY3MWY5ODciLCJlZmU5NWQ3My01MWE4LTRlZGQtOGRhMy1lNWI5YTZjMTdjOTEiLCJjMjVlYzE3Yy01Y2RhLTQ3ODMtYWI1OS05OWMyMGU4M2JhYmIiLCI0YjRkYWQ3Zi0yMGRkLTQ4NmQtOGIwNC04MDQwYmFmZjdiMzgiLCI4NDIxNWQ4MS01MGQ4LTQ0NTktYmM4Ni1hMmY5MjI0MDk1YTEiLCJjYzJjZGQ4Yi1lYWNlLTRhNGItYTk1MC05Yjk4OWExODNiOTciLCIwZGNmMTk5Ni0zZDZhLTQ0YzAtYjE1NC1lMTI3YzEyNDIzNzAiLCJmYWU3YzFhZi04MzRiLTQ1NDUtOGJmOS1iNWYxZGQwZDUyZjciLCJlZTRjMDZiZi1kOTNmLTQxNmMtOWJlNC1iY2ZhOWU1MjY2YzEiLCJjNGVlN2NkMS1mZTAyLTRjYTctOTFjYS1lNzdkYTc1NjI1YjUiLCI2OThhOTNmYi0wNTNhLTRhYTktODBkMy1mYWI1NGI2NGQzMWEiLCIwY2JjZDdmYi0xZjE3LTQ4ZmMtYWMzZS00YTIyMTMxZmE5MmQiLCI2NzdhMGVmZS0xZWQ4LTRlZDYtOWZlNC04N2M3NTk1YzI2MGIiXSwiaXBhZGRyIjoiMTMxLjExMS41LjE0NyIsIm5hbWUiOiJKdW5sb25nIENoZW4iLCJvaWQiOiJmZTlhOGI1MC01NTU0LTQ3M2MtYTVmOS00YjQ2NjFiMjA5ZjQiLCJvbnByZW1fc2lkIjoiUy0xLTUtMjEtMzE0Mjk0MjY1Ni00MTU3MTk3NzM5LTI4MjA5MDU5MDktMjgzOTEzIiwicHVpZCI6IjEwMDMyMDAyMEMwNTczODMiLCJyaCI6IjAuQVVjQVJRU2xTZnE5ZVV1dDQxUjdUem1HNlpBaU1YM0lLRHhIb08yT1UzU2JiVzFIQUQ0LiIsInNjcCI6InVzZXJfaW1wZXJzb25hdGlvbiIsInN1YiI6IldqYTlwRm56U2RjY2NxN3JmRlRXNjYyc2Mwa1ZFcmVESEZQdE9ZNlJMTXMiLCJ0aWQiOiI0OWE1MDQ0NS1iZGZhLTRiNzktYWRlMy01NDdiNGYzOTg2ZTkiLCJ1bmlxdWVfbmFtZSI6ImpjMjM3NUBjYW0uYWMudWsiLCJ1cG4iOiJqYzIzNzVAY2FtLmFjLnVrIiwidXRpIjoiTnRrYUg1TUltVS1Gekc0TzV3Zy1BUSIsInZlciI6IjEuMCIsIndpZHMiOlsiYjc5ZmJmNGQtM2VmOS00Njg5LTgxNDMtNzZiMTk0ZTg1NTA5Il19.odXZe6AxztsAlpcezL3_aa_m7GPrIReSkaljlW1BGyxn9dgNoAaIbaJNV7qNszyOTphaREUE6iPf8tJOUwS6au-13CZ-XtI4xKSPUiF3uYQhPe6XslVjyqgPA3kKPu0ifQWjcanUoxUECJJR9eU0cMU0AryZYT0WLRJU0YJwUiSNwGTYDkBC26H0E8Is_JEzRhmflE6ysmZStxG1mQwvbhyr8geBOGk19xx7JgvQFiT3ljcblKwJToySZ3V76992hDZzH-mJu-TNGEvFw9SpF6kb4Z-gTixEJLIo68vqKJ6X1UXzmaY5hSNKLB9i357WUAgHg8mkyVPCjP30h3iVZw");
-                request.SetRequestHeader("Apim-Request-Id", "4ffcac1c-b2fc-48ba-bd6d-b69d9942995a");
+                request.SetRequestHeader("Apim-Request-Id", "XXX");
                 yield return request.SendWebRequest();
                 UnityEngine.Debug.LogError("Status Code: " + request.responseCode);
 
@@ -406,10 +234,6 @@ public class SpeechRecognitionStudy2 : MonoBehaviour
                         }
                         selectDict[go.gameObject] = false;
                     }
-                    //foreach (KeyValuePair<Interactable, bool> kvp in searchExperimentLevel.selectStatusDict)
-                    //{
-                    //    searchExperimentLevel.selectStatusDict[kvp.Key] = false;
-                    //}
                 }
 
                 if (topIntent_string == "ModifyAppearance")
@@ -447,73 +271,7 @@ public class SpeechRecognitionStudy2 : MonoBehaviour
                     }
 
 
-                    //Interactable o.OnSelect();
-
-                    //if (objectOfInterest_text == "all")
-                    //{
-                    //    List<GameObject> objectsOfInterest = new List<GameObject>();
-                    //    foreach (KeyValuePair<string, string> entry in objectAppearance)
-                    //    {
-                    //        string[] words = entry.Value.Split(' ');
-
-                    //        if (originalColor != null && words[0] == originalColor.ToString())
-                    //        {
-                    //            objectsOfInterest.Add(GameObject.Find(entry.Key));
-                    //        }
-                    //        else if (originalShape != null && words[1] == originalShape.ToString())
-                    //        {
-                    //            objectsOfInterest.Add(GameObject.Find(entry.Key));
-                    //        }
-                    //    }
-                    //    foreach (GameObject objectOfInterest in objectsOfInterest)
-                    //    {
-                    //        string objectTargetColor = "";
-                    //        string objectTargetMaterial = "";
-                    //        UnityEngine.Debug.LogError("Changing object " + objectOfInterest.name);
-                    //        string[] originalAppearance = objectOfInterest.GetComponent<Renderer>().material.ToString().Split(' ');
-
-                    //        if (targetColor == null)
-                    //        {
-                    //            objectTargetColor = originalAppearance[0];
-                    //        }
-                    //        else
-                    //        {
-                    //            objectTargetColor = targetColor.ToString();
-                    //        }
-
-                    //        if (targetShape == null)
-                    //        {
-                    //            objectTargetMaterial = originalAppearance[1];
-                    //        }
-                    //        else
-                    //        {
-                    //            objectTargetMaterial = targetShape.ToString();
-                    //        }
-
-                    //        Material objecttargetAppearance = Resources.Load(objectTargetColor + " " + objectTargetMaterial, typeof(Material)) as Material;
-                    //        objectOfInterest.GetComponent<Renderer>().material = objecttargetAppearance;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    GameObject objectOfInterest = GameObject.Find(objectOfInterest_text);
-                    //    UnityEngine.Debug.LogError("Changing object " + objectOfInterest.name);
-                    //    string[] originalAppearance = objectOfInterest.GetComponent<Renderer>().material.ToString().Split(' ');
-
-                    //    if (targetColor == null)
-                    //    {
-                    //        targetColor = originalAppearance[0];
-                    //    }
-
-                    //    if (targetShape == null)
-                    //    {
-                    //        targetShape = originalAppearance[1];
-                    //    }
-
-                    //    Material targetAppearance = Resources.Load(targetColor + " " + targetShape, typeof(Material)) as Material;
-                    //    objectOfInterest.GetComponent<Renderer>().material = targetAppearance;
-                    //}
-
+                  
                 }
 
                 if (topIntent_string == "Select")
@@ -543,39 +301,8 @@ public class SpeechRecognitionStudy2 : MonoBehaviour
                     }
 
 
-                    //if (RayHit.hasHit && RayHit.triggerButtonDown && !RayHit.prevTriggerDown)
-                    //{
-                    //    //Debug.Log("Detected trigger pressed!");
-                    //    bool prevSelectStat = selectStatusDict[RayHit.hitObject];
-                    //    if (prevSelectStat)
-                    //    {
-                    //        Outline outline = RayHit.hitObject.GetComponent<Outline>();
-                    //        Destroy(outline);
-                    //        selectStatusDict[RayHit.hitObject] = false;
-                    //    }
-                    //    else
-                    //    {
-                    //        Outline outline = RayHit.hitObject.AddComponent<Outline>();
-                    //        outline.OutlineMode = Outline.Mode.OutlineAll;
-                    //        outline.OutlineColor = UnityEngine.Color.green;
-                    //        outline.OutlineWidth = 10f;
-                    //        selectStatusDict[RayHit.hitObject] = true;
-                    //    }
-                    //}
-
                 }
 
-                //else
-                //{
-                //    PythonRunner.RunFile($"{Application.dataPath}/chatgpt-retrieval/chatgpt.py", userQuery);
-                //}
-
-
-                //var task = Task.Run(() => PythonRunner.RunFile($"{Application.dataPath}/chatgpt-retrieval/chatgpt.py", userQuery));
-                //if (task.Wait(TimeSpan.FromSeconds(50)))
-                //    return;
-                //else
-                //    throw new Exception("Timed out");
 
 
                 break;
@@ -703,11 +430,4 @@ public class SpeechRecognitionStudy2 : MonoBehaviour
         // Add other component properties as needed
     }
 
-    //[System.Serializable]
-    //public class ComponentValue
-    //{
-    //    public string attribute;
-    //    public string appearance;
-    //    // Add other component properties as needed
-    //}
 }
