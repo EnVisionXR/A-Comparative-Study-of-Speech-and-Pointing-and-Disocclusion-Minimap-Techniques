@@ -53,7 +53,6 @@ public class SpeechRecognition : MonoBehaviour
     public Dictionary<string, string> objectAppearance;
     private bool prevPrimaryButtonState_ = false;
     private bool primaryButtonDown;
-    //public XRController rightHand;
     public ActionBasedController rightHand;
     public InputHelpers.Button primaryButton;
     private float doubleclickDelay = 0.5f, passedTimeSinceLastClick;
@@ -66,7 +65,6 @@ public class SpeechRecognition : MonoBehaviour
         searchExperimentManager = FindObjectOfType<SearchExperimentManager>();
         draggablePanel = FindObjectOfType<DraggablePanel>();
         searchExperimentLevel = FindObjectOfType<SearchExperimentLevel>();
-        //primaryButtonActionReference = rightHand.interactions.FirstOrDefault(i => i.name == "ActivateSpeech");
         sceneDescript = false;
         prevSceneDescriptState_ = false;
         mainObjectActivate = false;
@@ -78,12 +76,7 @@ public class SpeechRecognition : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         RayHit = GetComponent<RayHit>();
         shapeAndColorChanger = GetComponent<ShapeAndColorChanger>();
-        //AzureCLU = GetComponent<AzureCLU>();
-        //PostRequest = GetComponent<PostRequest>();
         mainCamera = Camera.main;
-        //CameraController = GameObject.Find("CameraController");
-        //AudioSourceObject = GameObject.Find("AudioSourceObject");
-        //cameraFieldOfView = GetComponent<CameraFieldOfView>();
         speechSynthesis = GetComponent<SpeechSynthesis>();
         //audioSource.transform.position = mainCamera.transform.position;
         ParseSceneGraph();
@@ -97,33 +90,12 @@ public class SpeechRecognition : MonoBehaviour
     }
     private async void Update()
     {
-        //audioSource.transform.position = mainCamera.transform.position;
-        //audioSource.spatialBlend = 0;
         passedTimeSinceLastClick += Time.deltaTime;
         primaryButtonDown = false;//OVRInput.Get(OVRInput.Button.One);
-        //rightHand.inputDevice.IsPressed(primaryButton, out primaryButtonDown);
-        //primaryButtonDown = rightHand.selectAction.action.IsPressed();
-        //if (rightHand != null && rightHand.isActiveAndEnabled && primaryButtonActionReference != null)
-        //{
-        //    // Check if the primary button is pressed
-        //    if (primaryButtonActionReference.action.IsPressed())
-        //    {
-        //        UnityEngine.Debug.Log("Primary button pressed!");
-        //        // Add your custom logic here
-        //    }
-        //}
-        //if (primaryButtonPressed.action.WasPressedThisFrame())
-        //{
-        //    UnityEngine.Debug.Log("Primary button pressed!");
-        //}
-        //UnityEngine.Debug.Log("Primary Button Down: " + primaryButtonDown);
         prevSceneDescriptState_ = sceneDescript;
         prevMainObjectState_ = mainObjectActivate;
         prevSearchObjectState = searchObjectActivate;
         prevCancelState_ = cancelActivate;
-
-        //if (Input.GetKeyDown(KeyCode.C))
-        //if (primaryButtonDown && !prevPrimaryButtonState_)
         if (primaryButtonPressed.action.WasPressedThisFrame())
         {
             if (previouslyPressed)
@@ -287,14 +259,6 @@ public class SpeechRecognition : MonoBehaviour
                 UnityEngine.Debug.LogError("None objects selected!");
             }
         }
-        //if (Input.GetKeyDown(KeyCode.A))
-        //{
-        //    await AzureCLU.StartAsync();
-        //}
-
-
-
-        //if (Input.GetKeyDown(KeyCode.S))
         if (previouslyPressed && passedTimeSinceLastClick > doubleclickDelay)
         {
             SingleClick();
@@ -309,11 +273,6 @@ public class SpeechRecognition : MonoBehaviour
 
     async public void SingleClick()
     {
-        //foreach (KeyValuePair<string, string> entry in objectAppearance)
-        //{
-        //    UnityEngine.Debug.LogError("Object Appearance: " + entry.Key + entry.Value);
-        //}
-
         UnityEngine.Debug.LogError("Single click detected, starting voice recognition...");
         cancelActivate = false;
         UnityEngine.Debug.LogError("Speak into your microphone.");
@@ -325,8 +284,6 @@ public class SpeechRecognition : MonoBehaviour
 
         // Play the audio clip
         audioSource.Play();
-
-        //cancelActivate = true;
 
         var speechConfig = SpeechConfig.FromSubscription("XXXX", "uksouth");
         speechConfig.SpeechRecognitionLanguage = "en-US";
@@ -355,13 +312,6 @@ public class SpeechRecognition : MonoBehaviour
                 audioSource.Stop();
             }
         }
-        //foreach (AudioSource audioSource in allAudioSources)
-        //{
-        //    if (audioSource.gameObject == CameraController || audioSource.gameObject == AudioSourceObject)
-        //    {
-        //        audioSource.Stop();
-        //    }
-        //}
         AudioClip clip_cancel = Resources.Load<AudioClip>("Cancel_success");
         audioSource.clip = clip_cancel;
         // Play the audio clip
@@ -375,8 +325,6 @@ public class SpeechRecognition : MonoBehaviour
         StartCoroutine(OutputSpeechRecognitionResult(speechRecognitionResult));
     }
 
-
-    //public async void OutputSpeechRecognitionResult(SpeechRecognitionResult speechRecognitionResult)
     public IEnumerator OutputSpeechRecognitionResult(SpeechRecognitionResult speechRecognitionResult)
     {
         switch (speechRecognitionResult.Reason)
@@ -395,14 +343,8 @@ public class SpeechRecognition : MonoBehaviour
                 // Play the audio clip
                 audioSource.Play();
 
-                //await Task.Delay(100);
-
-                string url = "https://cognitivelanguage0122.cognitiveservices.azure.com/language/:analyze-conversations?api-version=2022-10-01-preview";
+                string url = "https://cognitivelanguage0122.cognitiveservices.azure.com/language/XXX";
                 string bodyJsonString = "{\"kind\":\"Conversation\",\"analysisInput\":{\"conversationItem\":{\"id\":\"PARTICIPANT_ID_HERE\",\"text\":\"" + userQuery + "\",\"modality\":\"text\",\"language\":\"en\",\"participantId\":\"PARTICIPANT_ID_HERE\"}},\"parameters\":{\"projectName\":\"AIGC4XR-UserStudy\",\"verbose\":true,\"deploymentName\":\"UserStudy-0501\",\"stringIndexType\":\"TextElement_V8\"}}";
-                //string bodyJsonString = "{\"kind\":\"Conversation\",\"analysisInput\":{\"conversationItem\":{\"id\":\"PARTICIPANT_ID_HERE\",\"text\":\"" + userQuery + "\",\"modality\":\"text\",\"language\":\"en\",\"participantId\":\"PARTICIPANT_ID_HERE\"}},\"parameters\":{\"projectName\":\"UserQueryUnderstanding\",\"verbose\":true,\"deploymentName\":\"SceneEdit-0121\",\"stringIndexType\":\"TextElement_V8\"}}";
-                //CoroutineWithData cd = new CoroutineWithData(this, PostRequest.Post(url, bodyJsonString));
-                //yield return cd.coroutine;
-                //UnityEngine.Debug.Log("result is " + cd.result);  //  'success' or 'fail'
 
                 var request = new UnityWebRequest(url, "POST");
                 byte[] bodyRaw = Encoding.UTF8.GetBytes(bodyJsonString);
@@ -410,8 +352,7 @@ public class SpeechRecognition : MonoBehaviour
                 request.downloadHandler = (DownloadHandler)new DownloadHandlerBuffer();
                 request.SetRequestHeader("Content-Type", "application/json");
                 request.SetRequestHeader("authorization", searchExperimentManager.azureCLUKey);
-                //request.SetRequestHeader("authorization", "Bearer XXX");
-                request.SetRequestHeader("Apim-Request-Id", "4ffcac1c-b2fc-48ba-bd6d-b69d9942995a");
+                request.SetRequestHeader("Apim-Request-Id", "XXXX");
                 yield return request.SendWebRequest();
                 UnityEngine.Debug.LogError("Status Code: " + request.responseCode);
 
@@ -431,10 +372,6 @@ public class SpeechRecognition : MonoBehaviour
                         }
                         searchExperimentLevel.selectStatusDict[go] = false;
                     }
-                    //foreach (KeyValuePair<Interactable, bool> kvp in searchExperimentLevel.selectStatusDict)
-                    //{
-                    //    searchExperimentLevel.selectStatusDict[kvp.Key] = false;
-                    //}
                 }
 
                 if (topIntent_string == "ModifyAppearance")
@@ -470,78 +407,6 @@ public class SpeechRecognition : MonoBehaviour
                     {
                         shapeAndColorChanger.ChangeShapeAndColor(originalColor_text, originalShape_text, targetColor_text, targetShape_text);
                     }
-                    
-
-                    //Interactable o.OnSelect();
-
-                    //if (objectOfInterest_text == "all")
-                    //{
-                    //    List<GameObject> objectsOfInterest = new List<GameObject>();
-                    //    foreach (KeyValuePair<string, string> entry in objectAppearance)
-                    //    {
-                    //        string[] words = entry.Value.Split(' ');
-
-                    //        if (originalColor != null && words[0] == originalColor.ToString())
-                    //        {
-                    //            objectsOfInterest.Add(GameObject.Find(entry.Key));
-                    //        }
-                    //        else if (originalShape != null && words[1] == originalShape.ToString())
-                    //        {
-                    //            objectsOfInterest.Add(GameObject.Find(entry.Key));
-                    //        }
-                    //    }
-                    //    foreach (GameObject objectOfInterest in objectsOfInterest)
-                    //    {
-                    //        string objectTargetColor = "";
-                    //        string objectTargetMaterial = "";
-                    //        UnityEngine.Debug.LogError("Changing object " + objectOfInterest.name);
-                    //        string[] originalAppearance = objectOfInterest.GetComponent<Renderer>().material.ToString().Split(' ');
-
-                    //        if (targetColor == null)
-                    //        {
-                    //            objectTargetColor = originalAppearance[0];
-                    //        }
-                    //        else
-                    //        {
-                    //            objectTargetColor = targetColor.ToString();
-                    //        }
-
-                    //        if (targetShape == null)
-                    //        {
-                    //            objectTargetMaterial = originalAppearance[1];
-                    //        }
-                    //        else
-                    //        {
-                    //            objectTargetMaterial = targetShape.ToString();
-                    //        }
-
-                    //        Material objecttargetAppearance = Resources.Load(objectTargetColor + " " + objectTargetMaterial, typeof(Material)) as Material;
-                    //        objectOfInterest.GetComponent<Renderer>().material = objecttargetAppearance;
-                    //    }
-                    //}
-                    //else
-                    //{
-                    //    GameObject objectOfInterest = GameObject.Find(objectOfInterest_text);
-                    //    UnityEngine.Debug.LogError("Changing object " + objectOfInterest.name);
-                    //    string[] originalAppearance = objectOfInterest.GetComponent<Renderer>().material.ToString().Split(' ');
-
-                    //    if (targetColor == null)
-                    //    {
-                    //        targetColor = originalAppearance[0];
-                    //    }
-
-                    //    if (targetShape == null)
-                    //    {
-                    //        targetShape = originalAppearance[1];
-                    //    }
-
-                    //    Material targetAppearance = Resources.Load(targetColor + " " + targetShape, typeof(Material)) as Material;
-                    //    objectOfInterest.GetComponent<Renderer>().material = targetAppearance;
-                    //}
-
-
-
-
 
                 }
 
@@ -551,8 +416,6 @@ public class SpeechRecognition : MonoBehaviour
                     var entities = response["result"]["prediction"]["entities"];
                     string originalColor_text = "";
                     string originalShape_text = "";
-                    //JToken objectOfInterest_jtoken = entities.SelectToken("$[?(@.category == 'ObjectOfInterest')].text");
-                    //string objectOfInterest_text = objectOfInterest_jtoken.ToString();
                     JToken originalColor = entities.SelectToken("$[?(@.category == 'Original Color')].text");
                     if (originalColor != null)
                     {
@@ -570,42 +433,7 @@ public class SpeechRecognition : MonoBehaviour
                     {
                         shapeAndColorChanger.SelectObject(originalColor_text, originalShape_text);
                     }
-
-
-                    //if (RayHit.hasHit && RayHit.triggerButtonDown && !RayHit.prevTriggerDown)
-                    //{
-                    //    //Debug.Log("Detected trigger pressed!");
-                    //    bool prevSelectStat = selectStatusDict[RayHit.hitObject];
-                    //    if (prevSelectStat)
-                    //    {
-                    //        Outline outline = RayHit.hitObject.GetComponent<Outline>();
-                    //        Destroy(outline);
-                    //        selectStatusDict[RayHit.hitObject] = false;
-                    //    }
-                    //    else
-                    //    {
-                    //        Outline outline = RayHit.hitObject.AddComponent<Outline>();
-                    //        outline.OutlineMode = Outline.Mode.OutlineAll;
-                    //        outline.OutlineColor = UnityEngine.Color.green;
-                    //        outline.OutlineWidth = 10f;
-                    //        selectStatusDict[RayHit.hitObject] = true;
-                    //    }
-                    //}
-
-                }
-
-                //else
-                //{
-                //    PythonRunner.RunFile($"{Application.dataPath}/chatgpt-retrieval/chatgpt.py", userQuery);
-                //}
-
-                
-                //var task = Task.Run(() => PythonRunner.RunFile($"{Application.dataPath}/chatgpt-retrieval/chatgpt.py", userQuery));
-                //if (task.Wait(TimeSpan.FromSeconds(50)))
-                //    return;
-                //else
-                //    throw new Exception("Timed out");
-                
+                }               
 
                 break;
             case ResultReason.NoMatch:
@@ -618,11 +446,9 @@ public class SpeechRecognition : MonoBehaviour
 
                 UnityEngine.Debug.LogError($"NOMATCH: Speech could not be recognized.");
                 draggablePanel.SetSpeechFeedback("Speech could not be recognized.");
-                //speechSynthesis.SpeakText("Sorry, I didn't recognize your voice. Please try again.");
                 cancelActivate = false;
                 if (unrecognizeCount > 2)
                 {
-                    //speechSynthesis.SpeakText("Sorry, I didn't get that. Please try saying 'Where am I', 'What is near me', or 'Where is the <objectname>'.");
                     UnityEngine.Debug.LogError("Sorry, I didn't get that.");
                 }
                 break;
@@ -630,17 +456,13 @@ public class SpeechRecognition : MonoBehaviour
                 var cancellation = CancellationDetails.FromResult(speechRecognitionResult);
                 draggablePanel.SetSpeechFeedback($"Speech recognition cancelled. Reason: {cancellation.Reason}");
                 UnityEngine.Debug.LogError($"CANCELED: Reason={cancellation.Reason}");
-                //speechSynthesis.SpeakText("Sorry, speech recognition was cancelled. Please try again.");
                 if (cancellation.Reason == CancellationReason.Error)
                 {
-                    //UnityEngine.Debug.Log($"CANCELED: ErrorCode={cancellation.ErrorCode}");
                     UnityEngine.Debug.LogError($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
                     UnityEngine.Debug.LogError($"CANCELED: Did you set the speech resource key and region values?");
                 }
                 break;
         }
-        // sceneDescript = false;
-        // prevSceneDescriptState_ = sceneDescript;
     }
 
 
@@ -680,19 +502,12 @@ public class SpeechRecognition : MonoBehaviour
 
         foreach (SceneGraph child in children)
         {
-            //List<ComponentData> components = child.components;
             bool isEmpty = !child.components.Any();
-            //if (child.name != null)
             if (!isEmpty)
             {
                 if (!objectAppearance.ContainsKey(child.name))
                 {
                     objectAppearance.Add(child.name, child.components[0].appearance);
-                    //UnityEngine.Debug.LogError(child.components);
-                    //UnityEngine.Debug.LogError(child.components[0]);
-                    //UnityEngine.Debug.LogError(child.components[0].position);
-                    //UnityEngine.Debug.LogError(child.components[0].appearance);
-                    //objectAppearance.Add(child.name, child.name);
                 }
             }
 
@@ -731,12 +546,4 @@ public class SpeechRecognition : MonoBehaviour
         public string appearance;
         // Add other component properties as needed
     }
-
-    //[System.Serializable]
-    //public class ComponentValue
-    //{
-    //    public string attribute;
-    //    public string appearance;
-    //    // Add other component properties as needed
-    //}
 }
